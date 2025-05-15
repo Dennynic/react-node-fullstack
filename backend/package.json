@@ -1,0 +1,30 @@
+{
+  "name": "@webapp/backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --rs ./src/index.ts",
+    "build": "rimraf ./dist/ && tsc --build ./tsconfig.json",
+    "types": "tsc --noEmit --project ./tsconfig.json",
+    "start": "node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22.14.1"
+  },
+  "dependencies": {
+    "@trpc/server": "^11.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "lodash": "^4.17.21",
+    "lorem-ipsum": "^2.0.8",
+    "zod": "^3.24.4"
+  }
+}

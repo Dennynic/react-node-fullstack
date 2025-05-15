@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "@webapp/webapp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,11 +7,22 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "types": "tsc --noEmit --project ./tsconfig.json",
+    "stylelint": "stylelint --cache --cache-location ./node_modules/.cache/.stylelintcache 'src/**/*.scss'",
+    "stylecheck": "sass --update -q ./src:./node_modules/.cache/.stylecheckcache"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.67.1",
+    "@trpc/client": "^11.1.1",
+    "@trpc/react-query": "^11.1.1",
+    "@webapp/backend": "workspace:*",
+    "include-media": "^2.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.5.2",
+    "reset-css": "^5.0.2",
+    "sass": "^1.87.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
@@ -22,7 +33,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
-    "typescript": "~5.7.2",
+    "stylelint": "^16.19.1",
+    "stylelint-config-prettier-scss": "^1.0.0",
+    "stylelint-config-standard-scss": "^15.0.0",
     "typescript-eslint": "^8.26.1",
     "vite": "^6.3.1"
   }
