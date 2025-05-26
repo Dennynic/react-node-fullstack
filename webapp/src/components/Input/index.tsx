@@ -1,27 +1,45 @@
+import { FormikProps } from "formik";
+import cn from "classnames";
+
+import css from './index.module.scss';
+
+
 export const Input = ({
   name,
   label,
-  state,
-  setState,
+  formik
 }: {
   name: string;
   label: string;
-  state: Record<string, any>;
-  setState: React.Dispatch<React.SetStateAction<any>>;
+  formik: FormikProps<any>;
 }) => {
+  const value = formik.values[name];
+  const error = formik.errors[name] as string | undefined
+  const isTouched = !!formik.touched[name];
+  const isDisabled = formik.isSubmitting;
+  const isInvalid = isTouched && !!error;
   return (
-    <div style={{ marginBottom: 10 }}>
-      <label htmlFor={name}>{label}</label>
+    <div className={cn({[css.field]:true, [css.disabled]:isDisabled })}>
+      <label className={css.label} htmlFor={name}>{label}</label>
       <br />
       <input
+        className={cn({
+          [css.input]: true,
+          [css.invalid]: isInvalid
+        })}
         type="text"
+        disabled = {isDisabled}
         onChange={e => {
-          setState({ ...state, [name]: e.target.value });
+          formik.setFieldValue(name, e.target.value);
         }}
-        value={state[name]}
+        onBlur={() => {
+          formik.setFieldTouched(name);
+        }}
+        value={value}
         name={name}
         id={name}
       />
+      {isInvalid && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 };

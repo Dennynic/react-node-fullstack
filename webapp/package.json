@@ -17,12 +17,16 @@
     "@trpc/client": "^11.1.1",
     "@trpc/react-query": "^11.1.1",
     "@webapp/backend": "workspace:*",
+    "classnames": "^2.5.1",
+    "formik": "^2.4.6",
+    "formik-validator-zod": "^2.2.0",
     "include-media": "^2.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.5.2",
     "reset-css": "^5.0.2",
-    "sass": "^1.87.0"
+    "sass": "^1.87.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

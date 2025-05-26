@@ -1,24 +1,31 @@
+import { FormikProps } from 'formik';
 export const TextArea = ({
   name,
-  state,
-  setState,
+  formik,
 }: {
   name: string;
-  state: Record<string, any>;
-  setState: React.Dispatch<React.SetStateAction<any>>;
+  formik: FormikProps<any>;
 }) => {
+  const value = formik.values[name];
+  const error = formik.errors[name] as string | undefined;
+  const touched = formik.touched[name];
   return (
     <div style={{ marginBottom: 10 }}>
       <label htmlFor="text">Text</label>
       <br />
       <textarea
+        disabled={formik.isSubmitting}
         onChange={e => {
-          setState({ ...state, text: e.target.value });
+          formik.setFieldValue(name, e.target.value);
         }}
-        value={state.text}
+        onBlur={() => {
+          formik.setFieldTouched(name);
+        }}
+        value={value}
         name={name}
         id="text"
       />
+      {!!touched && !!error && <div style={{ color: 'red' }}>{error}</div>}
     </div>
   );
 };
