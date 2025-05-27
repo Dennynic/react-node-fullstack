@@ -1,0 +1,9 @@
+@use '../Input/index.module' as *;
+
+.field {
+  .input {
+    min-height: 150px;
+    max-width: 200px;
+    resize: vertical;
+  }
+}

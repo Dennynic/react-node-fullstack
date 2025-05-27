@@ -1,6 +1,12 @@
 @use '../../styles/mixins' as *;
-@use '../../styles/vars'  as *;
+@use '../../styles/vars' as *;
 
-.title{
-    @include h1;
+.title {
+  @include h1;
+}
+
+.ideaForm {
+  & label {
+    margin-top: 15px;
+  }
 }
