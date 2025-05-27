@@ -7,11 +7,13 @@ import css from './index.module.scss';
 export const Input = ({
   name,
   label,
-  formik
+  formik,
+  maxWidth,
 }: {
   name: string;
   label: string;
   formik: FormikProps<any>;
+  maxWidth?: number;
 }) => {
   const value = formik.values[name];
   const error = formik.errors[name] as string | undefined
@@ -21,12 +23,12 @@ export const Input = ({
   return (
     <div className={cn({[css.field]:true, [css.disabled]:isDisabled })}>
       <label className={css.label} htmlFor={name}>{label}</label>
-      <br />
       <input
         className={cn({
           [css.input]: true,
           [css.invalid]: isInvalid
         })}
+        style={{maxWidth}}
         type="text"
         disabled = {isDisabled}
         onChange={e => {
@@ -39,7 +41,7 @@ export const Input = ({
         name={name}
         id={name}
       />
-      {isInvalid && <div style={{ color: 'red' }}>{error}</div>}
+      {isInvalid && <div className={css.error}>{error}</div>}
     </div>
   );
 };
