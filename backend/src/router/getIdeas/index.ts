@@ -14,5 +14,6 @@ export const getIdeasTrpcRoute = trpc.procedure.query(async ({ctx}) => {
       createdAt: 'desc'
     }
   });
+ 
   return {ideas}
 })

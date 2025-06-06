@@ -12,6 +12,8 @@ import { FormItems } from '../../components/FormItems';
 
 import css from './index.module.scss';
 
+const ALERT_TIMOUT = 3000;
+
 export const NewIdeaPage = () => {
   const createIdea = trpc.createIdea.useMutation();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
@@ -32,12 +34,12 @@ export const NewIdeaPage = () => {
         setSuccessMessageVisible(true);
         setTimeout(() => {
           setSuccessMessageVisible(false);
-        }, 3000);
+        }, ALERT_TIMOUT);
       } catch (error: any) {
         setSubmittingError(error.message);
         setTimeout(() => {
           setSubmittingError(null);
-        }, 3000);
+        }, ALERT_TIMOUT);
       }
     },
   });
