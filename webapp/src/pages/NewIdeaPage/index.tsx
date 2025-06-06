@@ -6,7 +6,7 @@ import { Input } from '../../components/Input';
 import { TextArea } from '../../components/Textarea';
 import { Alert } from '../../components/Alert';
 import { trpc } from '../../lib/trpc';
-import { zCreayeIdeaTrpcInput } from '@webapp/backend/src/router/createIdea/input';
+import { zCreateIdeaTrpcInput } from '@webapp/backend/src/router/createIdea/input';
 import { Button } from '../../components/Button';
 import { FormItems } from '../../components/FormItems';
 
@@ -24,7 +24,7 @@ export const NewIdeaPage = () => {
       description: '',
       text: '',
     },
-    validate: withZodSchema(zCreayeIdeaTrpcInput),
+    validate: withZodSchema(zCreateIdeaTrpcInput),
     onSubmit: async values => {
       try {
         await createIdea.mutateAsync(values);

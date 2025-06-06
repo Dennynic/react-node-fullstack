@@ -1,7 +1,7 @@
 import z from "zod"
 const TEXT_VALIDATION_LENGTH = 10;
 
-export const zCreayeIdeaTrpcInput =  z.object({
+export const zCreateIdeaTrpcInput =  z.object({
         name: z.string().min(1),
         nick: z
           .string()
